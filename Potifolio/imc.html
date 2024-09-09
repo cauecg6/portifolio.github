@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<script>
+    function calcular(){
+        const peso = parseFloat(document.getElementById('peso').value);
+        const altura = parseFloat(document.getElementById('altura').value);
+
+        if(peso <= 0 || altura <=0){
+            alert('digite valores certos')
+            return;
+        }
+
+        const imc = peso / (altura * altura);
+
+
+        document.getElementById('resultado').value = imc.toFixed(2)
+
+        if (imc < 18.5) {
+                document.getElementById('verificar').innerText = "Baixo peso!";
+                
+            } else if(imc > 18.5 && imc <= 24.9){
+                document.getElementById('verificar').innerText = "Peso ideal!";
+            
+            } else if(imc >= 25 && imc <= 29.9){
+                document.getElementById('verificar').innerText = "Sobrepeso!";
+
+            } else {
+                document.getElementById('verificar').innerText = "Obesidade!";
+
+            }
+        }
+    
+</script>
+<body>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f7f9fc;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+
+        .container {
+            background-color: #ffffff;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+            width: 300px;
+            text-align: center;
+        }
+
+        h1 {
+            color: #333;
+            margin-bottom: 20px;
+            font-size: 22px;
+        }
+
+        label {
+            display: block;
+            margin: 10px 0 5px;
+            font-weight: bold;
+            color: #555;
+        }
+
+        input[type="number"],
+        input[type="text"] {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 15px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-size: 16px;
+            box-sizing: border-box;
+        }
+
+        input[type="number"] {
+            width: calc(100% - 22px);
+        }
+
+        button {
+            background-color: #007bff;
+            color: white;
+            border: none;
+            padding: 12px 0;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+            transition: background-color 0.3s ease;
+            width: 100%;
+        }
+
+        button:hover {
+            background-color: #0056b3;
+        }
+
+        #verificar {
+            margin-top: 20px;
+            font-size: 18px;
+            font-weight: bold;
+            color: #333;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h1>Calculadora de IMC</h1>
+        
+        <label for="altura">Digite sua altura (m):</label>
+        <input type="number" id="altura" step="0.01" placeholder="Ex: 1.75">
+
+        <label for="peso">Digite seu peso (kg):</label>
+        <input type="number" id="peso" step="0.1" placeholder="Ex: 70.5">
+
+        <button onclick="calcular()">Calcular</button>
+
+        <label for="resultado">Resultado do IMC:</label>
+        <input type="text" id="resultado" name="resultado" readonly>
+
+        <p id="verificar"></p>
+    </div>
+</body>
+</html>
